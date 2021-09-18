@@ -38,10 +38,10 @@ setup(
     packages=['licpy'],
     package_dir={'licpy': 'licpy'},
     ext_modules=ext_modules,
-    version='0.2',
+    version='0.3',
     description='Line Integral Convolution',
-    author='Dzhelil Rufat',
-    author_email='drufat@fastmail.com',
+    author=('Dzhelil Rufat','Shibo'),
+    author_email='shibo_yuan@outlook.com',
     license='GNU GPLv3',
     url='http://github.com/drufat/licpy.git',
     requires=[
