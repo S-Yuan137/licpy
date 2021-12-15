@@ -16,15 +16,15 @@ def grey_save(name, tex):
 
     plt.imsave(name, texture)
 
-def grey_show(name, tex):
+def grey_show(tex):
     tex = tex[:, ::-1]
     tex = tex.T
 
-    M, N = tex.shape
-    texture = np.empty((M, N, 4), np.float32)
-    texture[:, :, 0] = tex
-    texture[:, :, 1] = tex
-    texture[:, :, 2] = tex
-    texture[:, :, 3] = 1
+    # M, N = tex.shape
+    # texture = np.empty((M, N, 4), np.float32)
+    # texture[:, :, 0] = tex
+    # texture[:, :, 1] = tex
+    # texture[:, :, 2] = tex
+    # texture[:, :, 3] = 1
 
-    plt.imshow(name, texture)
+    plt.imshow(tex)

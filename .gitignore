@@ -1,4 +1,4 @@
 build
 dist
 licpy.egg-info
-running_test
+running_test/*.png
