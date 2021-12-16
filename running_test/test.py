@@ -68,11 +68,21 @@ def show_grey(tex):
     tex = tex.T
     plt.imshow(tex, origin = 'lower', cmap='Greys')
 
+def streamlines(Vx, Vy):
+    Vx, Vy = Vx.T, Vy.T
+    x = np.linspace(0, Vx.shape[0]-1, Vx.shape[0])
+    y = np.linspace(0, Vx.shape[1]-1, Vx.shape[1])
+    x, y = np.meshgrid(y, x)
+    print(x.shape, y.shape, Vx.shape)
+
+    plt.streamplot(x, y, Vx, Vy, density=[0.5, 1])
+
+
 with h5py.File("D:\CUHK\Data_from_zcao\struct01\struct01_snap52.h5", 'r') as f:
-    B_x = f['i_mag_field'][80:120,50:90,50]
-    B_y = f['j_mag_field'][80:120,50:90,50]
-    rho = f['gas_density'][80:120,50:90,50]
-    rho = np.log2(rho)
+    B_x = f['i_mag_field'][:,:,50]
+    B_y = f['j_mag_field'][:,:,50]
+    rho = f['gas_density'][:,:,50]
+    # rho = np.log2(rho)
 
 
 L = 10
@@ -80,7 +90,9 @@ tex = runlic(B_x, B_y, L)
 # dir = r'D:\CUHK\SbCodes\licpy\LIC_Sbsource\running_test\test.png'
 show(rho)
 show_grey(tex)
+streamlines(B_x, B_y)
 show_c(tex, rho)
+
 plt.figure()
 plt.quiver(B_x.T, B_y.T)
 plt.show()
